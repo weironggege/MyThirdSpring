@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="car" class="Spring.beans.autowire.Car">
+		<property name="brond" value="Aido"></property>
+		<property name="crop" value="beijing"></property>
+		<property name="maxspeed" value="170"></property>
+		<property name="price" value="300000"></property>
+	</bean>
+	
+	<bean id="address" class="Spring.beans.autowire.Address"
+	p:city="Beijing" p:street="SanYuanLi"></bean>
+	
+	<bean id="address1" class="Spring.beans.autowire.Address"
+	p:city="Beijing" p:street="WuDaoKou"></bean>
+
+	<!-- 要求再配置Person时， 必须要有一个关联的Car， 换句话说person这个bean依赖于Car这个Bean -->
+	<bean id="person1" class="Spring.beans.autowire.Person"
+	p:name="Tom" p:age="24" p:address-ref="address" depends-on="car"></bean>
+</beans>
